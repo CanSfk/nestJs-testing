@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Inject, Post, Req, Res } from '@nestjs/common';
 import { Request, Response } from 'express';
-import { CreateCustomerDto } from 'src/testings/dto/CreateCustomer.dto';
+import { TestCustomerDto } from 'src/testings/dto/TestCustomer.dto';
 import { TestingsService } from 'src/testings/services/testings/testings.service';
 
 @Controller('testings')
@@ -17,5 +17,10 @@ export class TestingsController {
     if (!page || !count)
       res.status(400).send({ msg: 'Missing page or count query parameter.' });
     else res.send(200);
+  }
+
+  @Post('customer')
+  testCustomer(@Body() testCustomerDto: TestCustomerDto) {
+    return this.testingsService.testCustomer(testCustomerDto);
   }
 }
