@@ -1,12 +1,13 @@
-import { Controller, Get, Inject, Post, Req, Res } from '@nestjs/common';
+import { Body, Controller, Get, Inject, Post, Req, Res } from '@nestjs/common';
 import { Request, Response } from 'express';
+import { CreateCustomerDto } from 'src/testings/dto/CreateCustomer.dto';
 import { TestingsService } from 'src/testings/services/testings/testings.service';
 
 @Controller('testings')
 export class TestingsController {
   constructor(
     @Inject('TESTINGS_SERVICE')
-    private readonly testgingsService: TestingsService,
+    private readonly testingsService: TestingsService,
   ) {}
 
   @Get()
